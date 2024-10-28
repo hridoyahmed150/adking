@@ -6,8 +6,7 @@ import useSWR from 'swr';
 import type { Posts } from './interfaces';
 
 export default function Posts() {
-  console.log(API_ROUTES.posts);
-  const { data: posts } = useSWR<Posts[], Error>(
+  const { data, isLoading } = useSWR<Posts[], Error>(
     API_ROUTES.posts,
     (url) => {
       return makeRequestClient({
@@ -15,7 +14,8 @@ export default function Posts() {
         method: "GET",
       })
         .then((res) => {
-          return res.results;
+          console.log(res[0]);
+          return res;
         })
         .catch((err) => {
           console.error(err);
@@ -24,16 +24,24 @@ export default function Posts() {
     { revalidateOnFocus: false }
   );
 
-  return (
-    <div>
-      <h1>WordPress Posts</h1>
-      <ul>
-        {posts?.map((post: Posts) => (
-          <li key={post.id}>{post.title.rendered}</li>
+  const postsArray = data ? Object.values(data) : [];
+  console.log(data);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+  if (data) {
+    return (
+      <div>
+        <h1>WordPress Posts</h1>
+
+        {postsArray.map((post) => (
+          <div key={post.id}>
+            <h2>{post.title?.rendered || 'Untitled'}</h2>
+            <div dangerouslySetInnerHTML={{ __html: post.content?.rendered || 'No content available' }} />
+          </div>
         ))}
-      </ul>
-
-
-    </div>
-  );
+      </div>
+    );
+  }
 }
