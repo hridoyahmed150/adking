@@ -30,7 +30,7 @@ export default function Header() {
 
   return (
     // Header Section
-    <main className='bg-yellow-400'>
+    <main className='bg-[#f6ad02]'>
       <div className="container m-auto flex items-center justify-between w-full p-4">
         {/* Logo Section */}
         <div className="w-1/3 flex justify-center cursor-pointer">
