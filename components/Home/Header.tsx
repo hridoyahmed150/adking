@@ -5,12 +5,28 @@ import logo from '@/components/image/logo-removebg-preview.png'
 import { FaRegUserCircle } from "react-icons/fa";
 import { MdOutlineLocalGroceryStore } from "react-icons/md";
 import { IoSearch } from "react-icons/io5";
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 
 export default function Header() {
 
-  const [isFocused, setIsFocused] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const searchRef = useRef<HTMLDivElement>(null);
+
+
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+        setIsExpanded(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   return (
     // Header Section
@@ -21,29 +37,39 @@ export default function Header() {
           <Image src={logo} alt="Logo" width={100} height={100} />
         </div>
         <div className="w-1/3 flex justify-center">
-          <ul className="flex gap-5 text-white">
-            <li className="li">HOME</li>
-            <li className="li">SHOP</li>
-            <li className="li">ELEMENT</li>
-            <li className="li">PAGES</li>
-            <li className="li">PORTFOLIO</li>
-            <li className="li">BLOGS</li>
+          <ul className="flex text-white">
+            {['HOME', 'SHOP', 'ELEMENT', 'PAGES', 'PORTFOLIO', 'BLOGS'].map((item) => (
+              <li
+                key={item}
+                className="relative cursor-pointer transition-all duration-100 font-normal hover:font-semibold group mx-3 hover:scale-110"
+              >
+                {item}
+                <span
+                  className="absolute left-0 bottom-0 w-0 h-[2px] bg-white transition-all duration-300 ease-in-out group-hover:w-full"
+                ></span>
+              </li>
+            ))}
           </ul>
         </div>
         {/* Navigation Tools */}
         <div className="w-1/3 flex justify-end items-center space-x-4">
           {/* Search Section */}
           <div className="flex justify-end items-center w-full h-full">
-            <div className="relative">
+            <div className="relative" ref={searchRef}>
+              {/* Input Field */}
               <input
                 type="text"
                 placeholder="Search..."
-                className={`px-4 py-3 transition-all duration-400 ease-in-out ${isFocused ? 'w-[300px]' : 'w-[20px]'
-                  } text-gray-700 text-sm uppercase tracking-wider rounded-md border-none bg-gradient-to-r from-white to-[#f5eed3] focus:outline-none`}
-                onFocus={() => setIsFocused(true)}
-                onBlur={() => setIsFocused(false)}
+                className={`px-4 py-3 transition-all duration-400 ease-in-out ${isExpanded ? 'w-[300px] bg-gradient-to-r from-white to-[#f5eed3]' : 'w-[20px] bg-transparent'
+                  } text-gray-700 text-sm uppercase tracking-wider rounded-md border-none focus:outline-none`}
+                onFocus={() => setIsExpanded(true)}
               />
-              <IoSearch className="text-xl absolute top-3 right-3" />
+
+              {/* Search Icon */}
+              <IoSearch
+                className="text-xl absolute top-3 right-3 cursor-pointer"
+                onClick={() => setIsExpanded((prev) => !prev)} // Toggles expanded state
+              />
             </div>
           </div>
           {/* User Icon */}
