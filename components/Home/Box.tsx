@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import box from '@/components/image/new.webp'
+import box from '@/public/image/new.webp'
 
 function Box() {
   return (
@@ -19,7 +19,7 @@ function Box() {
             types of sign letters samples, provide you with style <br />
             reference, and bring convenience to your business.
           </p>
-          <button className="px-4 py-1 mt-6 border border-[#f6ad02] text-[#f6ad02] hover:text-white hover:bg-[#f6ad02] duration-100">BUY IT</button>
+          <button className="px-4 py-1 mt-6 border border-[#f6ad02] text-[#f6ad02] hover:text-white hover:bg-[#f6ad02] duration-500">BUY IT</button>
         </div>
       </div>
     </div>

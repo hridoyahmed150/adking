@@ -1,6 +1,6 @@
 // components/Hero.js
 import Image from 'next/image';
-import BG from '@/components/image/hero.jpg'
+import BG from '@/public/image/hero.jpg'
 
 export default function Hero() {
   return (

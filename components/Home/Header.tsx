@@ -1,7 +1,7 @@
 // components/Header.js
 "use client";
 import Image from 'next/image';
-import logo from '@/components/image/logo-removebg-preview.png'
+import logo from '@/public/image/logo.png'
 import { FaRegUserCircle } from "react-icons/fa";
 import { MdOutlineLocalGroceryStore } from "react-icons/md";
 import { IoSearch } from "react-icons/io5";
