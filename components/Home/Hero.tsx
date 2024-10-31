@@ -4,7 +4,7 @@ import BG from '@/public/image/hero.jpg'
 
 export default function Hero() {
   return (
-    <div className="relative w-full flex justify-center items-center h-96">
+    <div className="relative w-full flex justify-center items-center h-96 mt-[90px]">
       <Image
         src={BG}
         alt="Background"

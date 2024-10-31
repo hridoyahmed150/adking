@@ -30,11 +30,11 @@ export default function Header() {
 
   return (
     // Header Section
-    <main className='bg-[#f6ad02]'>
+    <main className='bg-[#f6ad02] fixed w-full z-50 top-0'>
       <div className="container m-auto flex items-center justify-between w-full p-4">
         {/* Logo Section */}
         <div className="w-1/3 flex justify-center cursor-pointer">
-          <Image src={logo} alt="Logo" width={100} height={100} />
+          <Image src={logo} alt="Logo" width={60} height={60} />
         </div>
         <div className="w-1/3 flex justify-center">
           <ul className="flex text-white">

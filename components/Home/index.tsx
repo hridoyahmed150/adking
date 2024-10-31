@@ -4,6 +4,10 @@ import Hero from './Hero'
 import Passionate from './Passionate'
 import Box from './Box'
 import Footer from './Footer'
+import Mixitup from './Mixitup'
+
+
+
 
 export default function Home() {
   return (
@@ -11,6 +15,7 @@ export default function Home() {
       <Header />
       <Hero />
       <Passionate />
+      <Mixitup />
       <Box />
       <Footer />
     </>
