@@ -1,19 +1,16 @@
 // components/Header.js
 "use client";
 import Image from 'next/image';
+import Link from 'next/link';  // Import Link from Next.js
 import logo from '@/public/image/logo.png'
 import { FaRegUserCircle } from "react-icons/fa";
 import { MdOutlineLocalGroceryStore } from "react-icons/md";
 import { IoSearch } from "react-icons/io5";
 import { useState, useRef, useEffect } from 'react';
 
-
 export default function Header() {
-
   const [isExpanded, setIsExpanded] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
-
-
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -29,7 +26,6 @@ export default function Header() {
   }, []);
 
   return (
-    // Header Section
     <main className='bg-[#f6ad02] fixed w-full z-50 top-0'>
       <div className="container m-auto flex items-center justify-between w-full p-4">
         {/* Logo Section */}
@@ -38,12 +34,21 @@ export default function Header() {
         </div>
         <div className="w-1/3 flex justify-center">
           <ul className="flex text-white">
-            {['HOME', 'SHOP', 'ELEMENT', 'PAGES', 'PORTFOLIO', 'BLOGS'].map((item) => (
+            {[
+              { name: 'HOME', path: '/home' },
+              { name: 'SHOP', path: '/' },
+              { name: 'ELEMENT', path: '/' },
+              { name: 'PAGES', path: '/' },
+              { name: 'PORTFOLIO', path: '/' },
+              { name: 'BLOGS', path: '/' },
+            ].map((item) => (
               <li
-                key={item}
+                key={item.name}
                 className="relative cursor-pointer transition-all duration-100 font-normal hover:font-semibold group mx-3 hover:scale-110"
               >
-                {item}
+                <Link href={item.path}>
+                  {item.name}
+                </Link>
                 <span
                   className="absolute left-0 bottom-0 w-0 h-[2px] bg-white transition-all duration-300 ease-in-out group-hover:w-full"
                 ></span>
