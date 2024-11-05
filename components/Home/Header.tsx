@@ -3,8 +3,6 @@
 import Image from 'next/image';
 import Link from 'next/link';  // Import Link from Next.js
 import logo from '@/public/image/logo.png'
-import { FaRegUserCircle } from "react-icons/fa";
-import { MdOutlineLocalGroceryStore } from "react-icons/md";
 import { IoSearch } from "react-icons/io5";
 import { useState, useRef, useEffect } from 'react';
 
@@ -40,7 +38,7 @@ export default function Header() {
               { name: 'ELEMENT', path: '/' },
               { name: 'PAGES', path: '/' },
               { name: 'PORTFOLIO', path: '/' },
-              { name: 'BLOGS', path: '/' },
+              { name: 'BLOGS', path: '/details' },
             ].map((item) => (
               <li
                 key={item.name}
@@ -76,14 +74,6 @@ export default function Header() {
                 onClick={() => setIsExpanded((prev) => !prev)} // Toggles expanded state
               />
             </div>
-          </div>
-          {/* User Icon */}
-          <div className="cursor-pointer p-1">
-            <FaRegUserCircle className='text-2xl' />
-          </div>
-          {/* Card Icon */}
-          <div className="cursor-pointer p-1">
-            <MdOutlineLocalGroceryStore className='text-2xl' />
           </div>
         </div>
       </div>

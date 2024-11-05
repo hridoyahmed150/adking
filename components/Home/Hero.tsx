@@ -17,9 +17,6 @@ export default function Hero() {
         <h1 className="text-white text-4xl md:text-6xl font-bold mb-4">
           Welcome to Our Site
         </h1>
-        <button className="mt-4 px-6 py-3 bg-teal-500 text-white font-semibold rounded-md hover:bg-teal-600 transition-colors duration-300">
-          Get Started
-        </button>
       </div>
     </div>
   );

@@ -37,11 +37,20 @@ const Mixitup = () => {
 
   return (
     <div className="max-w-[1100px] mx-auto h-full p-6">
+      <div className='flex justify-center'>
+        <h2 className="text-4xl font-bold mb-6">Our Product</h2>
+      </div>
       {/* Filter controls */}
       <div className="flex justify-end gap-4 mb-8 mr-4">
-        <Button className="btn" type="button" data-filter="all">All</Button>
-        <Button className="btn" type="button" data-filter=".Best">Best</Button>
-        <Button className="btn" type="button" data-filter=".Popular">Popular</Button>
+        <Button
+          className="bg-[#f6ad02] hover:bg-[#f6ad02] hover:scale-110 transition-transform duration-300"
+          type="button"
+          data-filter="all"
+        >
+          All
+        </Button>
+        <Button className="bg-[#f6ad02] hover:bg-[#f6ad02] hover:scale-110 transition-transform duration-300" type="button" data-filter=".Best">Best</Button>
+        <Button className="bg-[#f6ad02] hover:bg-[#f6ad02] hover:scale-110 transition-transform duration-300" type="button" data-filter=".Popular">Popular</Button>
       </div>
 
       {/* Container for MixItUp items */}
@@ -58,6 +67,12 @@ const Mixitup = () => {
             </div>
           </div>
         ))}
+      </div>
+      <div className='flex justify-center py-6'>
+        <Button className='bg-[#f6ad02] hover:bg-[#f6ad02] hover:scale-110 transition-transform duration-300 text-xl' type="button">
+          <Link href='/details'>View All
+          </Link>
+        </Button>
       </div>
     </div>
   );

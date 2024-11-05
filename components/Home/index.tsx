@@ -5,6 +5,7 @@ import Passionate from './Passionate'
 import Box from './Box'
 import Footer from './Footer'
 import Mixitup from './Mixitup'
+import Review from './Review'
 
 
 
@@ -16,6 +17,7 @@ export default function Home() {
       <Hero />
       <Passionate />
       <Mixitup />
+      <Review />
       <Box />
       <Footer />
     </>
