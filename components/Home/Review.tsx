@@ -12,7 +12,7 @@ export default function Review() {
       </div>
       <div className='flex justify-center py-6'>
         <Button className='bg-[#f6ad02] hover:bg-[#f6ad02] hover:scale-110 transition-transform duration-300 text-xl' type="button">
-          <Link href='/details'>View All
+          <Link href='/reviews'>View All
           </Link>
         </Button>
       </div>

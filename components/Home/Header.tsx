@@ -25,7 +25,7 @@ export default function Header() {
 
   return (
     <main className='bg-[#f6ad02] fixed w-full z-50 top-0'>
-      <div className="container m-auto flex items-center justify-between w-full p-4">
+      <div className="container m-auto flex items-center justify-between w-full p-2">
         {/* Logo Section */}
         <div className="w-1/3 flex justify-center cursor-pointer">
           <Image src={logo} alt="Logo" width={60} height={60} />

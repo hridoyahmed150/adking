@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const Blog = () => {
   return (
-    <div className="container mx-auto px-4 py-8 max-w-[1100px] text-yellow-800 rounded-lg shadow-lg mt-[90px]">
+    <div className="container mx-auto px-4 py-8 max-w-[1100px] text-yellow-800 rounded-lg shadow-lg mt-[75px]">
 
       {/* Heading Section */}
       <h1 className="text-3xl font-bold text-yellow-900 mb-4">Blog Title Here</h1>
