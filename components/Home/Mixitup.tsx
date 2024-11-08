@@ -27,12 +27,12 @@ const Mixitup = () => {
 
   // Array of card data
   const cards = [
-    { id: 1, category: 'Best', image: '/product.jpg', title: 'Quick View' },
-    { id: 2, category: 'Best', image: '/product.jpg', title: 'Quick View' },
-    { id: 3, category: 'Best', image: '/product.jpg', title: 'Quick View' },
-    { id: 4, category: 'Best', image: '/product.jpg', title: 'Quick View' },
-    { id: 5, category: 'Popular', image: '/product.jpg', title: 'Quick View' },
-    { id: 6, category: 'Popular', image: '/product.jpg', title: 'Quick View' },
+    { id: 1, category: 'Best', image: '/product-1.jpg', title: 'Quick View' },
+    { id: 2, category: 'Best', image: '/product-2.jpg', title: 'Quick View' },
+    { id: 3, category: 'Best', image: '/product-1.jpg', title: 'Quick View' },
+    { id: 4, category: 'Best', image: '/product-2.jpg', title: 'Quick View' },
+    { id: 5, category: 'Popular', image: '/product-1.jpg', title: 'Quick View' },
+    { id: 6, category: 'Popular', image: '/product-2.jpg', title: 'Quick View' },
   ];
 
   return (
@@ -56,9 +56,15 @@ const Mixitup = () => {
       {/* Container for MixItUp items */}
       <div ref={containerRef} className="mixitup-container grid grid-cols-3 gap-[20px]">
         {cards.map((card) => (
-          <div key={card.id} className={`mix ${card.category} flex justify-center`}>
+          <div key={card.id} className={`mix ${card.category} flex justify-center rounded-lg`}>
             <div className="relative group overflow-hidden rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105">
-              <Image src={card.image} alt={card.title} width={317} height={317} className="object-cover transition-transform duration-300 cursor-pointer" />
+              <Image
+                src={card.image}
+                alt={card.title}
+                width={317}
+                height={317}
+                className="object-cover transition-transform duration-300 cursor-pointer h-[317px] w-[317px]"
+              />
               <Link href={`/details`}>
                 <div className="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <h3 className="text-white text-lg font-semibold translate-y-4 group-hover:translate-y-0 transition-transform duration-300">{card.title}</h3>
@@ -70,7 +76,7 @@ const Mixitup = () => {
       </div>
       <div className='flex justify-center py-6'>
         <Button className='bg-[#f6ad02] hover:bg-[#f6ad02] hover:scale-110 transition-transform duration-300 text-xl' type="button">
-          <Link href='/details'>View All
+          <Link href='/listing'>View All
           </Link>
         </Button>
       </div>

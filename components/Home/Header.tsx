@@ -34,11 +34,10 @@ export default function Header() {
           <ul className="flex text-white">
             {[
               { name: 'HOME', path: '/home' },
-              { name: 'SHOP', path: '/' },
               { name: 'ELEMENT', path: '/' },
-              { name: 'PAGES', path: '/' },
               { name: 'PORTFOLIO', path: '/' },
               { name: 'BLOGS', path: '/details' },
+              { name: 'CONTACT US', path: '/contact' },
             ].map((item) => (
               <li
                 key={item.name}
