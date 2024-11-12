@@ -6,6 +6,7 @@ import Box from './Box'
 import Footer from './Footer'
 import Mixitup from './Mixitup'
 import Review from './Review'
+import Clint from './Clint'
 
 
 
@@ -19,6 +20,7 @@ export default function Home() {
       <Mixitup />
       <Review />
       <Box />
+      <Clint />
       <Footer />
     </>
   )

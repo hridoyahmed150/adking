@@ -18,7 +18,7 @@ export default function ReviewSwiper() {
       date: "Oct 22, 2024",
       rating: 5,
       review: "Justin from Pink Plumber was a life saver this morning...",
-      imageUrl: "/product.jpg"
+      imageUrl: "/product.jpg",
     },
     {
       id: 2,
@@ -26,7 +26,7 @@ export default function ReviewSwiper() {
       date: "Oct 15, 2024",
       rating: 5,
       review: "Another good experience with Pink Plumber. Very helpful!",
-      imageUrl: "/product.jpg"
+      imageUrl: "/product.jpg",
     },
     {
       id: 3,
@@ -34,7 +34,7 @@ export default function ReviewSwiper() {
       date: "Oct 15, 2024",
       rating: 5,
       review: "Pink Plumber is definitely my new go-to for plumbing issues.",
-      imageUrl: "/product.jpg"
+      imageUrl: "/product.jpg",
     },
     {
       id: 4,
@@ -42,7 +42,7 @@ export default function ReviewSwiper() {
       date: "Oct 10, 2024",
       rating: 4,
       review: "Good service, but it took a bit longer than expected.",
-      imageUrl: "/product.jpg"
+      imageUrl: "/product.jpg",
     },
     {
       id: 5,
@@ -50,19 +50,19 @@ export default function ReviewSwiper() {
       date: "Oct 5, 2024",
       rating: 5,
       review: "Fantastic work! Highly recommended.",
-      imageUrl: "/product.jpg"
+      imageUrl: "/product.jpg",
     },
   ];
 
   return (
-    <div className="w-full max-w-5xl mx-auto">
+    <div className="w-full max-w-5xl mx-auto lg:px-0 md:px-5 px-10">
       <Swiper
-        slidesPerView={3}
+        slidesPerView={1} // Set default to 1 for mobile
         spaceBetween={20}
         freeMode={true}
         pagination={{
           clickable: true,
-          el: ".swiper-pagination", // Explicitly targeting pagination
+          el: ".swiper-pagination",
         }}
         modules={[FreeMode, Pagination]}
         className="relative"
@@ -75,38 +75,34 @@ export default function ReviewSwiper() {
         {reviews.map((review) => (
           <SwiperSlide
             key={review.id}
-            className="p-4 bg-white rounded-lg flex flex-col justify-between !h-48 bg-gradient-to-b from-[#f3dca5] to-[#f6ad02]"
+            className="p-4 bg-white rounded-lg flex flex-col justify-between h-auto bg-gradient-to-b from-[#f3dca5] to-[#f6ad02]"
           >
-            <div className="flex flex-col items-start">
-              <div className="flex justify-center items-center gap-2 mb-4">
-                <Image
-                  src={review.imageUrl}
-                  alt={review.name}
-                  width={50}
-                  height={50}
-                  className="rounded-full" >
-                </Image>
-                <div>
-                  <div className="text-xl font-semibold">{review.name}</div>
-                  <div className="flex gap-2
-                  ">
-                    <span className="text-black text-sm">{review.date}</span>
-                    <div className="flex text-[#fff] pb-2">
-                      {[...Array(review.rating)].map((_, i) => (
-                        <FaStar key={i} />
-                      ))}
-                    </div>
+            <div className="flex items-center gap-4 mb-4">
+              <Image
+                src={review.imageUrl}
+                alt={review.name}
+                width={50}
+                height={50}
+                className="rounded-full"
+              />
+              <div>
+                <div className="text-lg font-semibold">{review.name}</div>
+                <div className="flex items-center gap-2 text-sm">
+                  <span className="text-black">{review.date}</span>
+                  <div className="flex text-white">
+                    {[...Array(review.rating)].map((_, i) => (
+                      <FaStar key={i} />
+                    ))}
                   </div>
                 </div>
               </div>
-
-              <p className="text-gray-700">{review.review}</p>
             </div>
+            <p className="text-gray-700">{review.review}</p>
           </SwiperSlide>
         ))}
       </Swiper>
-      {/* Pagination container inside the Swiper */}
+      {/* Pagination container */}
       <div className="swiper-pagination mt-4"></div>
-    </div >
+    </div>
   );
 }

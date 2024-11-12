@@ -41,7 +41,7 @@ const Mixitup = () => {
         <h2 className="text-4xl font-bold mb-6">Our Product</h2>
       </div>
       {/* Filter controls */}
-      <div className="flex justify-end gap-4 mb-8 mr-4">
+      <div className="flex sm:justify-end justify-center gap-4 mb:mb-8 mb-4 mr-4 ">
         <Button
           className="bg-[#f6ad02] hover:bg-[#f6ad02] hover:scale-110 transition-transform duration-300"
           type="button"
@@ -54,7 +54,7 @@ const Mixitup = () => {
       </div>
 
       {/* Container for MixItUp items */}
-      <div ref={containerRef} className="mixitup-container grid grid-cols-3 gap-[20px]">
+      <div ref={containerRef} className="mixitup-container grid grid-cols-3 justify-center md:gap-[20px] gap:[10px]">
         {cards.map((card) => (
           <div key={card.id} className={`mix ${card.category} flex justify-center rounded-lg`}>
             <div className="relative group overflow-hidden rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105">
