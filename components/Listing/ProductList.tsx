@@ -1,6 +1,7 @@
 "use client";
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import Sidebar from './Sidebar';
 
 const cards = [
   {
@@ -23,42 +24,47 @@ const cards = [
   },
 ];
 
-
 function ProductList() {
-  // Array of card data
-
   const router = useRouter();
 
   return (
-    <div className="space-y-6 pt-20 px-4 md:px-10 lg:px-0 max-w-7xl mx-auto pb-10">
-      <h1 className="text-3xl md:text-4xl font-bold py-14 text-center">OUR PRODUCTS</h1>
-      {cards.map((card, index) => (
-        <div
-          key={card.id}
-          className={`group flex flex-col md:flex-row ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} border border-[#f6ad02] rounded-lg overflow-hidden mx-auto items-start`}
-          onClick={() => router.push(`/listing/${card.id}`)}
-        >
-          {/* Image Section */}
-          <div className="overflow-hidden w-full md:w-1/3">
-            <Image
-              src={card.image}
-              alt={card.title}
-              width={400}
-              height={200}
-              className="object-cover transition-transform duration-300 group-hover:scale-110
-                w-full h-[200px] md:h-[150px] lg:h-[200px]" // Responsive heights
-            />
-          </div>
+    <div className="flex max-w-[1000px] mx-auto pt-20 pb-10 px-4 md:px-10 lg:px-0">
+      {/* Product List Section */}
+      <div className="flex-1 pr-4 overflow-y-auto">
+        <h1 className="text-3xl md:text-4xl font-bold py-14 text-center">OUR PRODUCTS</h1>
+        {cards.map((card, index) => (
+          <div
+            key={card.id}
+            className={`group flex flex-col md:flex-row ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} border border-[#f6ad02] rounded-lg overflow-hidden mx-auto items-start mb-6`}
+            onClick={() => router.push(`/listing/${card.id}`)}
+          >
+            {/* Image Section */}
+            <div className="overflow-hidden w-full md:w-1/3">
+              <Image
+                src={card.image}
+                alt={card.title}
+                width={400}
+                height={200}
+                className="object-cover transition-transform duration-300 group-hover:scale-110
+                  w-full h-[200px] md:h-[150px] lg:h-[200px]" // Responsive heights
+              />
+            </div>
 
-          {/* Text Section */}
-          <div className="p-4 w-full md:w-2/3 flex flex-col justify-center">
-            <h1 className="text-2xl md:text-3xl font-bold mb-2 text-[#f6ad02]">{card.title}</h1>
-            <p className="text-gray-400 mt-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100 font-bold">
-              {card.description}
-            </p>
+            {/* Text Section */}
+            <div className="p-4 w-full md:w-2/3 flex flex-col justify-center">
+              <h1 className="text-2xl md:text-3xl font-bold mb-2 text-[#f6ad02]">{card.title}</h1>
+              <p className="text-gray-400 mt-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100 font-bold">
+                {card.description}
+              </p>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
+
+      {/* Sidebar Section */}
+      <div className='hidden lg:block lg:w-1/4 sticky top-20 h-full px-4 pt-[150px]'>
+        <Sidebar />
+      </div>
     </div>
   );
 }

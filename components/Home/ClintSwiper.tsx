@@ -2,10 +2,11 @@
 "use client";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Pagination } from "swiper/modules";
+import { FreeMode, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
+import "swiper/css/autoplay";
 import Image from "next/image";
 
 export default function ClientSwiper() {
@@ -14,6 +15,10 @@ export default function ClientSwiper() {
     { id: 2, imageUrl: "/product.jpg" },
     { id: 3, imageUrl: "/product.jpg" },
     { id: 4, imageUrl: "/product.jpg" },
+    { id: 5, imageUrl: "/product.jpg" },
+    { id: 6, imageUrl: "/product.jpg" },
+    { id: 7, imageUrl: "/product.jpg" },
+    { id: 8, imageUrl: "/product.jpg" },
   ];
 
   return (
@@ -26,11 +31,15 @@ export default function ClientSwiper() {
           clickable: true,
           el: ".swiper-pagination",
         }}
-        modules={[FreeMode, Pagination]}
+        autoplay={{
+          delay: 1000, // Delay in milliseconds
+          disableOnInteraction: false,
+        }}
+        modules={[FreeMode, Pagination, Autoplay]}
         breakpoints={{
           640: { slidesPerView: 2 },
-          768: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 },
+          768: { slidesPerView: 3 },
+          1024: { slidesPerView: 4 },
         }}
       >
         {images.map((image) => (
@@ -39,12 +48,12 @@ export default function ClientSwiper() {
               <Image
                 src={image.imageUrl}
                 alt={`Client logo ${image.id}`}
-                width={300} // Default width for larger screens
-                height={300} // Default height for larger screens
+                width={300}
+                height={300}
                 className="rounded-full 
-                  w-[150px] h-[150px]     // Small screen size (e.g., mobile)
-                  sm:w-[200px] sm:h-[200px] // Tablet screen size
-                  md:w-[300px] md:h-[300px] // Desktop screen size"
+                  w-[100px] h-[100px]     // Small screen size (e.g., mobile)
+                  sm:w-[150px] sm:h-[150px] // Tablet screen size
+                  md:w-[200px] md:h-[200px] // Desktop screen size"
               />
             </div>
           </SwiperSlide>
