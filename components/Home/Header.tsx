@@ -1,39 +1,23 @@
-// components/Header.js
 "use client";
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from '@/public/image/logo.png';
-import { IoSearch, IoMenu, IoClose } from "react-icons/io5"; // Import menu and close icons
-import { useState, useRef, useEffect } from 'react';
+import { IoMenu, IoClose } from "react-icons/io5";
+import { useState } from 'react';
 
 export default function Header() {
-  const [isExpanded, setIsExpanded] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false); // State for mobile menu
-  const searchRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
-        setIsExpanded(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
 
   return (
     <main className='bg-[#f6ad02] fixed w-full z-50 top-0'>
-      <div className="container m-auto flex items-center justify-between w-full p-2">
-        {/* Logo Section */}
-        <div className="w-1/3 flex justify-center cursor-pointer">
+      <div className="max-w-[1000px] m-auto flex items-center justify-between w-full p-2">
+        {/* Logo Section - Align Left */}
+        <div className="w-1/3 flex md:justify-start justify-center cursor-pointer">
           <Image src={logo} alt="Logo" width={60} height={60} />
         </div>
 
-        {/* Menu Links for Desktop */}
-        <div className="w-1/3 hidden md:flex justify-center">
+        {/* Menu Links for Desktop - Align Right */}
+        <div className="w-1/3 hidden md:flex justify-end">
           <ul className="flex text-white">
             {[
               { name: 'HOME', path: '/home' },
@@ -55,27 +39,11 @@ export default function Header() {
           </ul>
         </div>
 
-        {/* Search and Mobile Menu Button */}
-        <div className="w-1/3 flex justify-end items-center space-x-4">
-          {/* Search Section */}
-          <div className="relative" ref={searchRef}>
-            <input
-              type="text"
-              placeholder="Search..."
-              className={`px-4 py-3 transition-all duration-400 ease-in-out ${isExpanded ? 'w-[300px] bg-gradient-to-r from-white to-[#f5eed3]' : 'w-[20px] bg-transparent'
-                } text-gray-700 text-sm uppercase tracking-wider rounded-md border-none focus:outline-none`}
-              onFocus={() => setIsExpanded(true)}
-            />
-            <IoSearch
-              className="text-xl absolute top-3 right-3 cursor-pointer"
-              onClick={() => setIsExpanded((prev) => !prev)}
-            />
-          </div>
-
-          {/* Mobile Menu Button */}
+        {/* Mobile Menu Button */}
+        <div className="w-1/3 flex justify-end items-center md:hidden">
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="text-white text-2xl md:hidden focus:outline-none"
+            className="text-white text-2xl focus:outline-none"
           >
             {isMenuOpen ? <IoClose /> : <IoMenu />}
           </button>

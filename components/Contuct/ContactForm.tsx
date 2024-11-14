@@ -31,7 +31,7 @@ function ContactForm() {
           className="w-full bg-transparent border border-gray-300 text-white p-3 placeholder-gray-300 focus:outline-none"
           rows={4}
         ></textarea>
-        <Button className='bg-[#f6ad02] hover:bg-[#f6ad02] hover:scale-110 transition-transform duration-300 text-xl' type="button">
+        <Button className='bg-[#f6ad02] hover:bg-[#f6ad02] hover:scale-110 transition-transform duration-300 text-xl md:w-[150px] w-[100%]' type="button">
           <Link href='/'>Submite
           </Link>
         </Button>
